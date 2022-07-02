@@ -14,7 +14,7 @@ if (program._optionValues['output']
     && program._optionValues['input']
   ) {
     const cmd = execSync(
-      'npm run swagger-cli '
+      'swagger-cli '
       + 'bundle '
       + '-o '
       + program._optionValues['output']
