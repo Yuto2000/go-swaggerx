@@ -1,6 +1,6 @@
 {
   "name": "go_swagger_help_package",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "swaggerのファイル生成とcode自動生成の補助コマンド",
   "main": "bin/command.js",
   "bin": {
