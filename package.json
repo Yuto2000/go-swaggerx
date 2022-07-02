@@ -15,5 +15,10 @@
   "bugs": {
     "url": "https://github.com/Yuto2000/go_swagger_help_commad/issues"
   },
-  "homepage": "https://github.com/Yuto2000/go_swagger_help_commad#readme"
+  "homepage": "https://github.com/Yuto2000/go_swagger_help_commad#readme",
+  "dependencies": {
+    "@apidevtools/swagger-cli": "^4.0.4",
+    "child_process": "^1.0.2",
+    "commander": "^9.3.0"
+  }
 }
