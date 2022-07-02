@@ -1,0 +1,19 @@
+{
+  "name": "go_swagger_help_package",
+  "version": "1.0.0",
+  "description": "swaggerのファイル生成とcode自動生成の補助コマンド",
+  "main": "bin/command.js",
+  "bin": {
+    "go_swa_help": "bin/command.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Yuto2000/go_swagger_help_commad.git"
+  },
+  "author": "yuto2000",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/Yuto2000/go_swagger_help_commad/issues"
+  },
+  "homepage": "https://github.com/Yuto2000/go_swagger_help_commad#readme"
+}
