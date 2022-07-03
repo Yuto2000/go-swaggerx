@@ -1,5 +1,6 @@
 # go-swaggerx
 
+[![License](https://poser.pugx.org/ucan-lab/laravel-dacapo/license)](https://packagist.org/packages/ucan-lab/laravel-dacapo)
 ## Introduction
 This is a library that is supposed to use go-swagger.  
 The troublesome commands are integrated into one.
