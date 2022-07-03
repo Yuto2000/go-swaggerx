@@ -12,8 +12,9 @@ $ npm i go_swagger_help_package
 ```
 
 ## Usage
+### option mode
 
-command : `go_swa_help`
+command : `go-swaggerx` + optiton
 
 option
 
@@ -29,5 +30,32 @@ All options are required.
 
 example
 ```
-$ go_swa_help -o ./swagger.yaml -t yaml -i ./swaggerMapping.yaml -a factory -A factory -T ./gen -f ./swagger.yaml
+$ go-swaggerx -o ./swagger.yaml -t yaml -i ./swaggerMapping.yaml -a factory -A factory -T ./gen -f ./swagger.yaml
+```
+### toml file mode
+
+command : `go-swaggerx`
+
+sample toml file
+
+```toml
+# This is a sample TOML document.
+
+title = "example"
+
+# do not edit
+[command]
+makeSwaggerFile = "swagger-cli bundle"
+generateCode = "docker run --rm  --user $(id -u):$(id -g) -e GOPATH=$(go env GOPATH):/go -v $HOME:$HOME -w $(pwd) quay.io/goswagger/swagger generate server"
+
+[makeSwaggerConfig]
+output = "./swagger.yaml"
+type = "yaml"
+input = "./swaggerMapping.yaml"
+
+[generateCodeConfig]
+package = "factory"
+name = "factory"
+template = "./gen"
+spec = "./swagger.yaml"
 ```
