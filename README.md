@@ -1,7 +1,7 @@
 # go_swagger_help_package
 
 ## Introduction
-This is a library that is supposed to use go-swagger.
+This is a library that is supposed to use go-swagger.  
 The troublesome commands are integrated into one.
 
 [swagger-cli bundle](https://www.npmjs.com/package/swagger-cli) + [quay.io/goswagger/swagger](https://goswagger.io/generate/server.html)
@@ -15,13 +15,13 @@ $ npm i go_swagger_help_package
 
 All options are required.
 
--o, --output output file pass
--t, --type file type
--i, --input input file pass
--a, --package the package to save the operations
--A, --name the name of the application
--T, --template the base directory for generating the files
--f, --spec the spec file to use
+-o, --output output file pass  
+-t, --type file type  
+-i, --input input file pass  
+-a, --package the package to save the operations  
+-A, --name the name of the application  
+-T, --template the base directory for generating the files  
+-f, --spec the spec file to use  
 
 example
 ```
