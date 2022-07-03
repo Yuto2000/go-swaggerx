@@ -9,7 +9,7 @@ The troublesome commands are integrated into one.
 
 ## Installation
 ```
-$ npm i go_swagger_help_package
+$ npm i go-swaggerx
 ```
 
 ## Usage

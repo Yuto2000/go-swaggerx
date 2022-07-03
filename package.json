@@ -1,6 +1,6 @@
 {
   "name": "go-swaggerx",
-  "version": "1.0.5",
+  "version": "1.0.6",
   "description": "Auxiliary command for swagger file generation and automatic code generation",
   "main": "bin/command.js",
   "bin": {
