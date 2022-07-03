@@ -1,4 +1,4 @@
-# go_swagger_help_package
+# go_swagger_help_command
 
 ## Introduction
 This is a library that is supposed to use go-swagger.  
@@ -14,6 +14,8 @@ $ npm i go_swagger_help_package
 ## Usage
 
 All options are required.
+
+command : `go_swa_help`
 
 `-o, --output` output file pass  
 `-t, --type` file type  
