@@ -1,4 +1,4 @@
-# go_swagger_help_command
+# go-swaggerx
 
 ## Introduction
 This is a library that is supposed to use go-swagger.  
