@@ -13,9 +13,11 @@ $ npm i go_swagger_help_package
 
 ## Usage
 
-All options are required.
-
 command : `go_swa_help`
+
+option
+
+All options are required.
 
 `-o, --output` output file pass  
 `-t, --type` file type  
