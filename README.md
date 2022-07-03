@@ -15,13 +15,13 @@ $ npm i go_swagger_help_package
 
 All options are required.
 
--o, --output output file pass  
--t, --type file type  
--i, --input input file pass  
--a, --package the package to save the operations  
--A, --name the name of the application  
--T, --template the base directory for generating the files  
--f, --spec the spec file to use  
+`-o, --output` output file pass  
+`-t, --type` file type  
+`-i, --input` input file pass  
+`-a, --package` the package to save the operations  
+`-A, --name` the name of the application  
+`-T, --template` the base directory for generating the files  
+`-f, --spec` the spec file to use  
 
 example
 ```
