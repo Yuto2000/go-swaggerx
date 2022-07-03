@@ -1,0 +1,17 @@
+title = "sample option"
+
+# do not edit
+[command]
+makeSwaggerFile = "swagger-cli bundle"
+generateCode = "docker run --rm  --user $(id -u):$(id -g) -e GOPATH=$(go env GOPATH):/go -v $HOME:$HOME -w $(pwd) quay.io/goswagger/swagger generate server"
+
+[makeSwaggerConfig]
+output = "./swagger.yaml"
+type = "yaml"
+input = "./swaggerMapping.yaml"
+
+[generateCodeConfig]
+package = "factory"
+name = "factory"
+template = "./gen"
+spec = "./swagger.yaml"

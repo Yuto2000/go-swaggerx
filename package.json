@@ -1,10 +1,10 @@
 {
-  "name": "go_swagger_help_package",
-  "version": "1.0.4",
+  "name": "go-swaggerx",
+  "version": "1.0.5",
   "description": "Auxiliary command for swagger file generation and automatic code generation",
   "main": "bin/command.js",
   "bin": {
-    "go_swa_help": "bin/command.js"
+    "go-swaggerx": "bin/command.js"
   },
   "repository": {
     "type": "git",
@@ -19,6 +19,7 @@
   "dependencies": {
     "@apidevtools/swagger-cli": "^4.0.4",
     "child_process": "^1.0.2",
-    "commander": "^9.3.0"
+    "commander": "^9.3.0",
+    "toml": "^3.0.0"
   }
 }

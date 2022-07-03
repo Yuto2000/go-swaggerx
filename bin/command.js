@@ -1,6 +1,8 @@
 #!/usr/bin/env node
-const program = require("commander");
-const { execSync } = require('child_process')
+const program = require('commander');
+const { execSync } = require('child_process');
+const fs = require('fs');
+const toml = require('toml');
 
 program
 // swagger-cli
@@ -14,6 +16,7 @@ program
 .option("-f, --spec <s>", "the spec file to use")
 .parse(process.argv);
 
+// option pattern
 if (program._optionValues['output']
     && program._optionValues['type']
     && program._optionValues['input']
@@ -22,32 +25,83 @@ if (program._optionValues['output']
     && program._optionValues['template']
     && program._optionValues['spec']
   ) {
+    const makeSwaggerFileCommand = 'swagger-cli bundle';
+    const generateCodeCommand = 'docker run --rm  --user $(id -u):$(id -g) -e GOPATH=$(go env GOPATH):/go -v $HOME:$HOME -w $(pwd) quay.io/goswagger/swagger generate server';
+    const makeSwaggerConfig = {
+      output : program._optionValues['output'],
+      type : program._optionValues['type'],
+      input : program._optionValues['input'],
+    };
+    const generateCodeConfig = {
+      package : program._optionValues['package'],
+      name : program._optionValues['name'],
+      template : program._optionValues['template'],
+      spec : program._optionValues['spec'],
+    };
+
     // swagger-cli
-    const cmd = execSync(
-      'swagger-cli '
-      + 'bundle '
-      + '-o '
-      + program._optionValues['output'] + ' '
-      + '-t '
-      + program._optionValues['type'] + ' '
-      + program._optionValues['input']
-    )
-    console.log(`${cmd.toString()}`)
+    execMakeSwagger(makeSwaggerFileCommand, makeSwaggerConfig)
+    // generate code
+    execGenerateCode(generateCodeCommand, generateCodeConfig)
 
-    // quay.io/goswagger/swagger
-    const generate_cmd = execSync(
-      'docker run --rm  --user $(id -u):$(id -g) -e GOPATH=$(go env GOPATH):/go -v $HOME:$HOME -w $(pwd) quay.io/goswagger/swagger generate server '
-      + '-a '
-      + program._optionValues['package'] + ' '
-      + '-A '
-      + program._optionValues['name'] + ' '
-      + '-t '
-      + program._optionValues['template'] + ' '
-      + '-f '
-      + program._optionValues['spec']
-    )
-    console.log(`${generate_cmd.toString()}`)
+  // toml pattern
+  } else if (Object.keys(program._optionValues).length === 0) {
+    // read toml file
+    const config = toml.parse(fs.readFileSync("./go-swaggerx.toml", "utf-8"));
+    const command = config.command;
+    const makeSwaggerConfig = config.makeSwaggerConfig;
+    const generateCodeConfig = config.generateCodeConfig;
 
-} else {
-  console.log('options is not enough! check "-h" or "--help"')
+    if (command.makeSwaggerFile
+      && command.makeSwaggerFile
+      && command.generateCode
+      && makeSwaggerConfig.output
+      && makeSwaggerConfig.type
+      && makeSwaggerConfig.input
+      && generateCodeConfig.package
+      && generateCodeConfig.name
+      && generateCodeConfig.template
+      && generateCodeConfig.spec
+      ) {
+      // swagger-cli
+      execMakeSwagger(command.makeSwaggerFile, makeSwaggerConfig)
+      // generate code
+      execGenerateCode(command.generateCode, generateCodeConfig)
+    } else {
+      errorMessage('check toml file');
+    }
+
+  } else {
+    errorMessage('check "-h" or "--help"');
+  }
+
+function execMakeSwagger(command, config) {
+  const cmd = execSync(
+    command + ' '
+    + '-o '
+    + config.output + ' '
+    + '-t '
+    + config.type + ' '
+    + config.input
+  )
+  console.log(`${cmd.toString()}`)
+}
+
+function execGenerateCode(command, config) {
+  const cmd = execSync(
+    command + ' '
+    + '-a '
+    + config.package + ' '
+    + '-A '
+    + config.name + ' '
+    + '-t '
+    + config.template + ' '
+    + '-f '
+    + config.spec + ' '
+  )
+  console.log(`${cmd.toString()}`)
+}
+
+function errorMessage(reason) {
+  console.log('options is not enough! ' + reason);
 }
